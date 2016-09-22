@@ -17,6 +17,9 @@ int main(void) {
 
 	cout << "La suma de los dados de los valores de los dados son: " << d.getSuma() << "\n\n" ; 
 
+	// cout << d.d1_;	//-> No se puede ya que estamos accediendo a una variable privada de
+	//					de la clase dados
+
 
 	return 0;
 }
