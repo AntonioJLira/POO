@@ -10,6 +10,7 @@ codificar la clase Dados. */
 #include <cstdlib>
 #include <ctime>
 #include "dados.h"
+using namespace std;
 
 
 // Constructor de la clase Dados, contiene el cuerpo de las funciones
@@ -19,13 +20,18 @@ Dados::Dados() {
 	srand(time(NULL));
 	d1_ = 1;
 	d2_ = 1;
+	lanzamiento_= 0;
+	media_= 0;
 
 }
 
 void Dados::lanzamiento(){
 
 	d1_ = (1 + rand() % 6);
+	lanzamiento_++;
 	d2_ = (1 + rand() % 6);
+	lanzamiento_++;
+
 
 }
 bool Dados::setDado1(int i){
@@ -38,6 +44,7 @@ bool Dados::setDado1(int i){
 	else {
 
 		d1_ = i;
+		lanzamiento_++;
 		return true;
 
 	}
@@ -52,8 +59,14 @@ bool Dados::setDado2(int j){
 	else {
 
 		d2_ = j;
+		lanzamiento_++;
 		return true;
 
 	}
+}
+int Dados::setMedia1(){
+
+	media_ += getDado1();
+	return media_;
 
 }

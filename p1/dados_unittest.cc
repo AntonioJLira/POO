@@ -1,0 +1,107 @@
+// dados_unittest.cc: Juan A. Romero
+// A sample program demonstrating using Google C++ testing framework.
+//
+
+
+// This sample shows how to write a more complex unit test for a class
+// that has multiple member functions.
+//
+// Usually, it's a good idea to have one test for each method in your
+// class.  You don't have to do that exactly, but it helps to keep
+// your tests organized.  You may also throw in additional tests as
+// needed.
+
+#include "dados.h"
+#include "gtest/gtest.h"
+
+// Tests the c'tor.
+TEST(Dados, Constructor) {
+  Dados d;
+
+  EXPECT_EQ(1, d.getDado1());
+  EXPECT_EQ(1, d.getDado2());
+  EXPECT_EQ(2, d.getSuma());
+
+}
+
+// Tests operación lanzamiento
+TEST(Dados, Lanzamiento) {
+  Dados d;
+  for (int i=0; i<100; i++){
+  d.lanzamiento();
+  EXPECT_GT(d.getDado1(), 0);
+  EXPECT_LT(d.getDado1(), 7);
+  EXPECT_GT(d.getDado2(), 0);
+  EXPECT_LT(d.getDado2(), 7);
+}
+
+}
+
+// Tests operación suma
+TEST(Dados, Suma) {
+  Dados d;
+
+  EXPECT_EQ(d.getDado1()+d.getDado2(), d.getSuma());
+}
+
+// Tests modificadores
+TEST(Dados, Modificadores) {
+  Dados d;
+
+  EXPECT_FALSE(d.setDado1(9));
+  EXPECT_FALSE(d.setDado1(-9));
+  EXPECT_FALSE(d.setDado2(9));
+  EXPECT_FALSE(d.setDado2(-9));
+  d.setDado1(3);
+  EXPECT_EQ(3, d.getDado1());
+  d.setDado2(2);
+  EXPECT_EQ(2, d.getDado2());
+  EXPECT_EQ(5, d.getSuma());
+}
+
+TEST(Dados, Diferencia){
+
+  Dados d;
+  EXPECT_LT(d.getDiferencia(),6);       // En estas pruebas hacemos el test segun
+  EXPECT_GT(d.getDiferencia(),-1);      // segun los valores aleatorios asignados,
+                                        // los cuales deben de estar comprendidos
+                                        // entre [0,5] que son los posibles casos
+                                        // extremos.[2 valores iguales ó 6-1 = 5]
+
+  d.setDado1(4);                        // Creamos un test donde le asignamos el
+  d.setDado2(2);                        // valor 4 al primer dado y 2 al segundo
+  EXPECT_EQ(2,d.getDiferencia());       // a traves de los setters y el metodo
+                                        // getDiferencia() debe de tener un valor
+                                        // esperado de 2
+
+}
+
+TEST(Dados, Lanzamientos){
+
+     Dados d;
+     EXPECT_EQ(0,d.getLanzamiento());   // Comprobamos primeramente que el valor
+     EXPECT_EQ(0,d.getLanzamiento1());  // de los dados inicialmente es 0
+     EXPECT_EQ(0,d.getLanzamiento2());
+
+     for (int i = 0 ; i < 50 ; i++){
+
+          d.lanzamiento();
+          d.setDado1();
+          d.setDado2();
+
+     }
+     EXPECT_EQ(100,d.getLanzamiento()); // Devuelve 100 ya que se lanzan 50 veces
+     EXPECT_EQ(50,d.getLanzamiento1()); // los 2 dados
+     EXPECT_EQ(50,d.getLanzamiento2());
+
+}
+
+TEST(Dados, Media){
+
+     Dados d;
+
+     EXPECT_EQ(0,getMedia1()); // Comprobamos que la media antes de realizar un
+     EXPECT_EQ(0,getMedia2()); // un lanzamiento es 0
+
+
+}
