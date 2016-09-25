@@ -21,7 +21,8 @@ Dados::Dados() {
 	d1_ = 1;
 	d2_ = 1;
 	lanzamiento_= 0;
-	media_= 0;
+	media1_= 0;
+	media2_= 0;
 
 }
 
@@ -64,9 +65,32 @@ bool Dados::setDado2(int j){
 
 	}
 }
-int Dados::setMedia1(){
+void Dados::setMedia1(){
 
-	media_ += getDado1();
-	return media_;
+	media1_ += d1_;
+
+}
+
+void Dados::setMedia2(){
+
+	media2_ += d2_;
+
+}
+
+void Dados::setUltimos(int i){
+
+	vectord1_[i] = d1_;
+	vectord2_[i] = d2_;
+
+}
+
+int Dados::getUltimos1(int i){
+
+	return vectord1_[i];
+
+}
+int Dados::getUltimos2(int i){
+
+	return vectord2_[i];
 
 }

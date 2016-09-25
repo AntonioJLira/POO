@@ -19,16 +19,22 @@ class Dados {
 		int getLanzamiento(){return lanzamiento_;};
 		int getLanzamiento1(){return lanzamiento_/2;};
 		int getLanzamiento2(){return lanzamiento_/2;};
-		int setMedia1();
-		int getMedia1(){return media_;}; 
+		void setMedia1();
+		void setMedia2();
+		float getMedia1(){ return media1_/getLanzamiento1(); };
+		float getMedia2(){ return media2_/getLanzamiento2(); };
+		void setUltimos(int i=0);
+		int getUltimos1(int i=0);
+		int getUltimos2(int i=0);
 
 
 
 
+	private: // Aqui declararemos las variables que se utilizaran
 
-	private: // Aqui declararemos las variables que se utilizar�n
-
-		int d1_, d2_,lanzamiento_,media_;
+		int d1_, d2_, lanzamiento_;
+		float media1_, media2_;
+		int vectord1_[4], vectord2_[4];
 
 };
 
