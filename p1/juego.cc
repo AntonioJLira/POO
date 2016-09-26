@@ -11,49 +11,66 @@ int main(void) {
 
 	int n = 4;
 
+	cout << "____________________________________\n\n" ;
+
 	for(int i = 0; i <= n ; i++){
 
-	d.lanzamiento();
+		d.lanzamiento();
 
-	d.setDado1();
-	cout << "_______________________________________________________________\n\n" ;
-
-	cout << "El valor del dado 1 es: " << d.getDado1() << "\n\n";
-	d.setMedia1();
+			d.setDado1();
+			cout << "Dado 1: " << d.getDado1() << "\n\n";
+			d.setMedia1();
 
 
-	d.setDado2();
-	cout << "El valor del dado 2 es: " << d.getDado2() << "\n\n";
-	d.setMedia2();
+			d.setDado2();
+			cout << "Dado 2: " << d.getDado2() << "\n\n";
+			d.setMedia2();
 
-	d.setUltimos(i);
+		d.setUltimos(i);
 
-	//cout << "La suma de los valores de los dados son: " << d.getSuma() << "\n\n" ;
+		cout << "Suma: " << d.getSuma() << "\n\n" ;
 
-	// cout << d.d1_;	// No se puede ya que estamos accediendo a una variable privada de
-					// de la clase dados
+		// cout << d.d1_;	// No se puede ya que estamos accediendo a una variable privada de
+						// de la clase dados
 
-	//cout << "La diferencia de los dos dados es: " <<  d.getDiferencia() << "\n\n";
-}
+		cout << "Diferencia: " <<  d.getDiferencia() << "\n";
 
-	cout << "_______________________________________________________________\n\n" ;
+		cout << "____________________________________\n\n" ;
 
-	cout << "El numero de lanzamientos ha sido: " << d.getLanzamiento() << "\n\n";
+		}
 
-	cout << "El numero de lanzamientos del dado 1 ha sido: " << d.getLanzamiento1() << "\n\n";
+	cout << "Lanzamientos totales: " << d.getLanzamiento() << "\n\n";
 
-	cout << "El numero de lanzamientos del dado 2 ha sido: " << d.getLanzamiento2() << "\n\n";
+	cout << "Lanzamientos dado 1: " << d.getLanzamiento1() << "\n\n";
+
+	cout << "Lanzamientos dado 2: " << d.getLanzamiento2() << "\n\n";
+
+	cout << "____________________________________\n\n" ;
 
 	cout << "La media del dado 1 es: " << d.getMedia1() << "\n\n";
 
 	cout << "La media del dado 2 es: " << d.getMedia2() << "\n\n";
 
-	cout << "_______________________________________________________________\n\n" ;
+	cout << "____________________________________\n\n" ;
 
-	for (int i = n; i > 0 ; i--){
+	cout << "\nUltimos valores del dado 1: ";
 
-	cout << "Valor del vector de prueba: " << d.getUltimos1(i) << "\n\n";
+	for (int i = 4; i >= 0 ; i--){
+
+	cout << d.getUltimos1(i) << " ";
 
 	}
+
+	cout << "\n\n";
+
+	cout << "\nUltimos valores del dado 2: ";
+
+	for (int i = 4; i >= 0 ; i--){
+
+		cout << d.getUltimos2(i) << " ";
+
+	}
+
+	cout << "\n\n____________________________________\n\n" ;
 
 }
