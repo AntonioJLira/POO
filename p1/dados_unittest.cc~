@@ -118,7 +118,7 @@ TEST(Dados, Media){
      d.setMedia2();
      
      EXPECT_EQ(5,d.getMedia1());
-     EXPECT_EQ(1,d.getMedia2());
+     EXPECT_EQ(5,d.getMedia2());
      
      
 

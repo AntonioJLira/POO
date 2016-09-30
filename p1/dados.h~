@@ -21,8 +21,8 @@ class Dados {
 		int getLanzamiento2(){return lanzamiento_/2;};
 		void setMedia1();
 		void setMedia2();
-		float getMedia1();
-		float getMedia2();
+		float getMedia1(){ return media1_/getLanzamiento1(); };
+		float getMedia2(){ return media2_/getLanzamiento2(); };
 		void setUltimos(int i=0);
 		int getUltimos1(int i=0);
 		int getUltimos2(int i=0);
