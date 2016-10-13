@@ -13,15 +13,18 @@
 
 #include "dados.h"
 #include "gtest/gtest.h"
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 
 // Tests the c'tor.
 TEST(Dados, Constructor) {
   Dados d;
-
+  
   EXPECT_EQ(1, d.getDado1());
   EXPECT_EQ(1, d.getDado2());
   EXPECT_EQ(2, d.getSuma());
-
+  
 }
 
 // Tests operación lanzamiento
@@ -38,16 +41,19 @@ TEST(Dados, Lanzamiento) {
 }
 
 // Tests operación suma
-TEST(Dados, Suma) {
+TEST(Dados, getSuma) {
   Dados d;
-
+  EXPECT_EQ(d.getDado1()+d.getDado2(), d.getSuma());
+  d.lanzamiento();
+  EXPECT_EQ(d.getDado1()+d.getDado2(), d.getSuma());
+  d.lanzamiento();
   EXPECT_EQ(d.getDado1()+d.getDado2(), d.getSuma());
 }
 
 // Tests modificadores
 TEST(Dados, Modificadores) {
   Dados d;
-
+  int r1, r2;
   EXPECT_FALSE(d.setDado1(9));
   EXPECT_FALSE(d.setDado1(-9));
   EXPECT_FALSE(d.setDado2(9));
@@ -57,69 +63,132 @@ TEST(Dados, Modificadores) {
   d.setDado2(2);
   EXPECT_EQ(2, d.getDado2());
   EXPECT_EQ(5, d.getSuma());
+  srand(time(NULL));
+  for (int i=0;i<100;i++)
+  {
+    r1=(rand()%6)+1;
+    r2=(rand()%6)+1;
+    EXPECT_TRUE(d.setDado1(r1));
+    EXPECT_TRUE(d.setDado2(r2));
+    EXPECT_EQ(r1, d.getDado1());
+    EXPECT_EQ(r2, d.getDado2());
+  }
 }
 
-TEST(Dados, Diferencia){
-
+TEST(Dados, getDiferencia) {
   Dados d;
-  EXPECT_LT(d.getDiferencia(),6);       // En estas pruebas hacemos el test segun
-  EXPECT_GT(d.getDiferencia(),-1);      // segun los valores aleatorios asignados,
-                                        // los cuales deben de estar comprendidos
-                                        // entre [0,5] que son los posibles casos
-                                        // extremos.[2 valores iguales ó 6-1 = 5]
-
-  d.setDado1(4);                        // Creamos un test donde le asignamos el
-  d.setDado2(2);                        // valor 4 al primer dado y 2 al segundo
-  EXPECT_EQ(2,d.getDiferencia());       // a traves de los setters y el metodo
-                                        // getDiferencia() debe de tener un valor
-                                        // esperado de 2
-
+  int r1,r2;
+  d.setDado1(2);
+  d.setDado2(2);
+  EXPECT_EQ(0, d.getDiferencia());
+  d.setDado1(2);
+  d.setDado2(3);
+  EXPECT_EQ(1, d.getDiferencia());
+  d.setDado1(3);
+  d.setDado2(2);
+  EXPECT_EQ(1, d.getDiferencia());
+  d.setDado1(1);
+  d.setDado2(6);
+  EXPECT_EQ(5, d.getDiferencia());
+  d.setDado1(6);
+  d.setDado2(1);
+  EXPECT_EQ(5, d.getDiferencia());
+  srand(time(NULL));
+  for (int i=0;i<100;i++)
+  {
+    r1=(rand()%6)+1;
+    r2=(rand()%6)+1;
+    d.setDado1(r1);
+    d.setDado2(r2);
+    EXPECT_EQ(abs(r1-r2), d.getDiferencia());
+  }
 }
 
-TEST(Dados, Lanzamientos){
-
-     Dados d;
-     EXPECT_EQ(0,d.getLanzamiento());   // Comprobamos primeramente que el valor
-     EXPECT_EQ(0,d.getLanzamiento1());  // de los dados inicialmente es 0
-     EXPECT_EQ(0,d.getLanzamiento2());
-
-     for (int i = 0 ; i < 50 ; i++){
-
-          d.lanzamiento();
-          d.setDado1();
-          d.setDado2();
-
-     }
-     EXPECT_EQ(100,d.getLanzamiento()); // Devuelve 100 ya que se lanzan 50 veces
-     EXPECT_EQ(50,d.getLanzamiento1()); // los 2 dados
-     EXPECT_EQ(50,d.getLanzamiento2());
-
+TEST(Dados, getLanzamientos) {
+  Dados d;
+  EXPECT_EQ(0, d.getLanzamientos1());
+  EXPECT_EQ(0, d.getLanzamientos2());
+  d.setDado1(2);
+  d.setDado2(2);
+  d.lanzamiento();
+  EXPECT_EQ(2, d.getLanzamientos1());
+  EXPECT_EQ(2, d.getLanzamientos2());
+  for (int i=0;i<5;i++) d.setDado1(4);
+  for (int i=0;i<10;i++) d.setDado2(4);
+  EXPECT_EQ(7, d.getLanzamientos1());
+  EXPECT_EQ(12, d.getLanzamientos2());
 }
 
+TEST(Dados, getMedia) { // Un buen test con random()
+  Dados d;
+  int i, r1, r2, s1=0, s2=0;
+  EXPECT_NEAR(0.0, d.getMedia1(), 0.001); // No usar EXPECT_EQ con floats
+  EXPECT_NEAR(0.0, d.getMedia2(), 0.001); // No se puede usar == con floats
+  d.setDado1(2);
+  d.setDado2(2);
+  EXPECT_NEAR(2.0, d.getMedia1(), 0.001);
+  EXPECT_NEAR(2.0, d.getMedia2(), 0.001);
+  srand(time(NULL));
+  s1+=2;
+  s2+=2;
+  d.lanzamiento();
+  s1+=d.getDado1();
+  s2+=d.getDado2();
+  for (i=0;i<10;i++){
+    r1=rand()%6+1;
+    r2=rand()%6+1;
+    s1+=r1;
+    s2+=r2;
+    d.setDado1(r1);
+    d.setDado2(r2);
+  }
+  EXPECT_NEAR((s1/12.0), d.getMedia1(), 0.001);
+  EXPECT_NEAR((s2/12.0), d.getMedia2(), 0.001);
+}
 
-TEST(Dados, Media){
+TEST(Dados, getUltimos1) {
+  Dados d;
+  int i;
+  int v1[5], v2[5];
+  for (i=1;i<6;i++) d.setDado1(i);
+  for (i=1;i<6;i++) d.setDado2(i);
+  d.getUltimos1(v1);
+  d.getUltimos2(v2);
+  for (i=0;i<5;i++) EXPECT_EQ(5-i,v1[i]);
+  for (i=0;i<5;i++) EXPECT_EQ(5-i,v2[i]);
+}
 
-     Dados d;
+TEST(Dados, getUltimos2) {
+  Dados d;
+  int i;
+  int v1[5], v2[5], v1t[5], v2t[5];
+  for (i=(rand()%100)+6;i>0;i--){
+      d.setDado1(1);
+      d.setDado2(1);
+      }
+  for (i=0;i<5;i++){
+      d.setDado1(v1t[i]=rand()%6+1);
+      d.setDado2(v2t[i]=rand()%6+1);
+      }
+  d.getUltimos1(v1);
+  d.getUltimos2(v2);
+  for (i=0;i<5;i++) EXPECT_EQ(v1t[i],v1[4-i]);
+  for (i=0;i<5;i++) EXPECT_EQ(v2t[i],v2[4-i]);
+}
 
-     EXPECT_EQ(0 , d.getMedia1()); // Comprobamos que la media antes de realizar un
-     EXPECT_EQ(0 , d.getMedia2()); // un lanzamiento es 0
-     
-     d.setDado1(5);
-     d.setDado2(1); 
-     d.setMedia1();
-     d.setMedia2();
-     d.setDado1(5);
-     d.setDado2(1); 
-     d.setMedia1();
-     d.setMedia2();     
-     d.setDado1(5);
-     d.setDado2(1); 
-     d.setMedia1();
-     d.setMedia2();
-     
-     EXPECT_EQ(5,d.getMedia1());
-     EXPECT_EQ(1,d.getMedia2());
-     
-     
-
+TEST(Dados, getUltimos3) { // Otro buen test con random()
+  Dados d;
+  int i;
+  int v1a[5], v2a[5];
+  int v1b[5], v2b[5];
+  for (i=0;i<5;i++) {
+    v1a[i]=(rand()%6)+1;
+    v2a[i]=(rand()%6)+1;
+    d.setDado1(v1a[i]);
+    d.setDado2(v2a[i]);
+  }
+  d.getUltimos1(v1b);
+  d.getUltimos2(v2b);
+  for (i=0;i<5;i++) EXPECT_EQ(v1a[i],v1b[4-i]);
+  for (i=0;i<5;i++) EXPECT_EQ(v2a[i],v2b[4-i]);
 }
