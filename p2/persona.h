@@ -15,6 +15,10 @@ class Persona{
 
             Persona(); // Constructor con parametros obligatorios
 
+            /*
+                Los constructores de copia y asignación no hacen falta declararlos,
+                se realizan en los tests
+             */
 
             // Modficadores → setters()
 

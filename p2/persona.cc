@@ -32,5 +32,5 @@ Persona::Persona(){
     localidad_ = "Aguilar";
     provincia_ = "Sevilla";
     pais_ = "España";
-    
+
 }
