@@ -1,8 +1,17 @@
+#ifndef RULETA_H
+#define RULETA_H
+
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <cstdlib>
+#include <list>
+
 #include "jugador.h"
 #include "crupier.h"
-#include <ctime>
-#include <list>
+#include "persona.h"
+
+
 
 
 
@@ -12,24 +21,35 @@ class Ruleta{
 public:
 
 
-     Ruleta(Crupier crupier);
+     Ruleta(Crupier c);
 
-     bool setBola(int bola);
-     void setBanca(int banca);
-     void setCrupier(Crupier)
-
-     int getBola(){return bola_;};
      int getBanca(){return banca_;};
+     int getBola(){return bola_;};
      Crupier getCrupier(){return crupier_;};
+     list <Jugador> getJugadores(){return jugadores_;};
 
+     bool setBanca(int banca);
+     bool setBola(int bola);
+     void setCrupier(Crupier c){crupier_=c;};
+
+     bool addJugador(Jugador j);
+     int deleteJugador(Jugador j);
+     int deleteJugador(string DNI);
+
+     void escribeJugadores();
+     void leeJugadores();
+
+     void giraRuleta(); 
 
 
 private:
 
      int bola_;
      int banca_;
+     list <Jugador> jugadores_;
      Crupier crupier_;
-     list <Jugador> jugador_;
-
 
 };
+
+
+ #endif
