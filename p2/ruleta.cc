@@ -9,12 +9,6 @@ Ruleta::Ruleta(Crupier c):crupier_(c){
 
 }
 
-void Ruleta::setBanca(int banca){
-
-     banca_=banca
-
-}
-
 bool Ruleta::setBanca(int banca){
 
      if(banca > -1){
@@ -27,9 +21,9 @@ bool Ruleta::setBanca(int banca){
 
 }
 
-bool Ruleta::setBola(){
+bool Ruleta::setBola(int bola){
 
-     if(bola => 0 || bola <= 36){
+     if((bola >= 0) or (bola <= 36)){
 
           bola_=bola;
           return true;
@@ -48,8 +42,6 @@ bool Ruleta::addJugador(Jugador j){
      nombre = j.getDNI()+".txt";
 
      jugadores_.push_back(j);
-
-     fstream file;
 
      file.open(nombre.c_str());
 
@@ -95,7 +87,7 @@ int Ruleta::deleteJugador(string DNI){
 
 void Ruleta::escribeJugadores(){
 
-     ofstream.salida("jugadores.txt");
+     ofstream salida("jugadores.txt");
      list<Jugador>::iterator i;
      for(i=jugadores_.begin();i!=jugadores_.end();i++){
 
@@ -146,7 +138,7 @@ void Ruleta::leeJugadores(){
           j.setLocalidad(localidad);
           j.setProvincia(provincia);
           j.setPais(pais);
-          j.setDinero(dinero);
+          j.setDinero(atoi(dinero));
 
           // Metemos el objeto j de tipo Juego
 
@@ -161,5 +153,12 @@ void Ruleta::leeJugadores(){
 void Ruleta::giraRuleta(){
 
       setBola((rand() % 37));
+
+}
+
+void Ruleta::getPremios(){
+
+
+
 
 }

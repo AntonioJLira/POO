@@ -40,6 +40,7 @@ public:
      void leeJugadores();
 
      void giraRuleta(); 
+	 void getPremios(); 
 
 
 private:
