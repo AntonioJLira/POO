@@ -49,6 +49,9 @@ private:
      int banca_;
      list <Jugador> jugadores_;
      Crupier crupier_;
+	 string color(int x);
+	 string parimpar(int x);
+	 string altobajo(int x);
 
 };
 

@@ -158,7 +158,99 @@ void Ruleta::giraRuleta(){
 
 void Ruleta::getPremios(){
 
+	list<Jugador>::iterator j;
+	list<Apuesta>::iterator a;
+	list<Apuesta> la;
 
+	for (j = jugadores_.begin(); j != jugadores_.end(); j++) {
+		j->setApuestas();
+		la = j->getApuestas();
+		for (a = la.begin(); a != la.end(); a++) {
+			switch (a->tipo) {
+			case 1: {
+				if (atoi(a->valor.c_str()) == bola_) {
+					j->setDinero(j->getDinero() + (a->cantidad * 35));
+					banca_ -= a->cantidad * 35;
+				}
+				else {
+					j->setDinero(j->getDinero() - a->cantidad);
+					banca_ += a->cantidad;
+				}
+				break;
+			}
+			case 2: {
+				if (bola_ != 0 && a->valor == color(bola_)) {
+					j->setDinero(j->getDinero() + a->cantidad);
+					banca_ -= a->cantidad;
+				}
+				else {
+					j->setDinero(j->getDinero() - a->cantidad);
+					banca_ += a->cantidad;
+				}
+				break;
+			}
+			case 3: {
+				if (bola_ != 0 && a->valor == parimpar(bola_)) {
+					j->setDinero(j->getDinero() + a->cantidad);
+					banca_ -= a->cantidad;
+				}
+				else {
+					j->setDinero(j->getDinero() - a->cantidad);
+					banca_ += a->cantidad;
+				}
+				break;
+			}
+			case 4: {
+				if (bola_ != 0 && a->valor == altobajo(bola_)) {
+					j->setDinero(j->getDinero() + a->cantidad);
+					banca_ -= a->cantidad;
+				}
+				else {
+					j->setDinero(j->getDinero() - a->cantidad);
+					banca_ += a->cantidad;
+				}
+				break;
+			}
+			}
+		}
+	}
+}
 
+string Ruleta::color(int x)
+{
+	switch (x) {
+	case 1:
+	case 3:
+	case 5:
+	case 7:
+	case 9:
+	case 12:
+	case 14:
+	case 16:
+	case 18:
+	case 19:
+	case 21:
+	case 23:
+	case 25:
+	case 27:
+	case 30:
+	case 32:
+	case 34:
+	case 36:
+		return "rojo";
+	default:
+		return "negro";
+	}
+}
 
+string Ruleta::parimpar(int x)
+{
+	if (x % 2 == 0) return "par";
+	return "impar";
+}
+
+string Ruleta::altobajo(int x)
+{
+	if (x>18) return "alto";
+	return "bajo";
 }
