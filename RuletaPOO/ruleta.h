@@ -1,9 +1,10 @@
 #ifndef RULETA_H
 #define RULETA_H
 
-
+#include "persona.h"
 #include "crupier.h"
 #include "jugador.h"
+
 #include <string>
 #include <cstdlib>
 #include <list>
@@ -23,7 +24,10 @@ class Ruleta {
 
      public:
 
-          Ruleta(const Crupier &c);          // Constructor de la clase
+          // Constructor de la clase Ruleta
+
+          Ruleta(Crupier c):crupier_(c){banca_=1000000;bola_=-1;srand(time(NULL));};
+
           int getBanca(){return banca_;};    // Metodos getBanca y getBola
           int getBola(){return bola_;};
 

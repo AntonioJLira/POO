@@ -1,9 +1,12 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
 
+#include "persona.h"
 #include <string>
 #include <list>
-#include "persona.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 

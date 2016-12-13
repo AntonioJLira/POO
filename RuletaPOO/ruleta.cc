@@ -1,21 +1,6 @@
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <ctime>
 #include "ruleta.h"
-#include "jugador.h"
-#include "crupier.h"
 
 using namespace std;
-
-Ruleta::Ruleta(const Crupier &c):crupier_(c){
-
-     bola_ = -1;
-     banca_ = 1000000;
-     srand(time(NULL));
-
-}
 
 bool Ruleta::setBanca(int banca){
 

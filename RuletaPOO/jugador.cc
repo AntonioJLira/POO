@@ -1,8 +1,3 @@
-#include <string>
-#include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include "persona.h"
 #include "jugador.h"
 
 using namespace std;
