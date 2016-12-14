@@ -26,29 +26,23 @@ bool Ruleta::setBola(int bola){
 
 bool Ruleta::addJugador(Jugador j){
 
-     string nombre;
-     fstream file;
+     list<Jugador>::iterator i;
 
-     nombre = j.getDNI()+".txt";
 
-     jugadores_.push_back(j);
+	for(i=jugadores_.begin();i!=jugadores_.end();i++)
+		if(i->getDNI()==j.getDNI())return false;
 
-     file.open(nombre.c_str());
+        jugadores_.push_back(j);
 
-     if(file){
+	string nomfich=(j.getDNI()+".txt");
+	ifstream fich(nomfich.c_str());
 
-          cout << "\nFichero no modificado\n";
-          file.close();
-          return false;
+	if(!fich){
+		ofstream(nomfich.c_str());
+	}
 
-     }else{
-
-          file.close();
-          file.open(nombre.c_str(),ios::in);
-          return true;
-
-     }
-
+	fich.close();
+	return true;
 }
 
 int Ruleta::deleteJugador(Jugador j){
@@ -88,7 +82,7 @@ void Ruleta::escribeJugadores(){
 
 void Ruleta::leeJugadores(){
 
-     ifstream entrada("jugadores");
+     ifstream entrada("jugadores.txt");
      char DNI[50], codigo[50], nombre[50], apellidos[50], direccion[50], localidad[50], provincia[50], pais[50], dinero[50];
 
      jugadores_.clear();      // Borramos los elementos de la lista
