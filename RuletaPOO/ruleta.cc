@@ -48,7 +48,7 @@ bool Ruleta::addJugador(Jugador j){
 int Ruleta::deleteJugador(Jugador j){
 
      return deleteJugador(j.getDNI());
-
+     
 }
 
 int Ruleta::deleteJugador(string DNI){
