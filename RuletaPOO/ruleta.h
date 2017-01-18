@@ -26,6 +26,7 @@ class Ruleta {
 
           // Constructor de la clase Ruleta
 
+
           Ruleta(Crupier c):crupier_(c){banca_=1000000;bola_=-1;srand(time(NULL));};
 
           int getBanca(){return banca_;};    // Metodos getBanca y getBola
@@ -47,6 +48,7 @@ class Ruleta {
           void leeJugadores();
           void giraRuleta();
           void getPremios();
+
 
 
 };
