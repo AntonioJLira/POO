@@ -12,13 +12,17 @@ int main(){
 
 int opcion=0;
 
+// Declaraciones de las variables
+
+string DNI,nombre,codigo,codigoJ,apellidos,direccion,localidad,provincia,pais;
+int dinero;
+
 // Declaraciones de los objetos
 
-Persona p(string DNI,string nombre,string apellidos, string direccion, string localidad,string provincia, string pais);
-Jugador j(string DNI, string codigoJ, string nombre, string apellidos,string direccion, string localidad, string provincia, string pais,int dinero);
-Crupier c(string DNI, string codigo, string nombre, string apellidos,string direccion, string localidad, string provincia, string pais);
-Ruleta r(Crupier c);
-
+Persona p(DNI, nombre, apellidos, direccion, localidad, provincia,pais);
+Jugador j(DNI, codigoJ, nombre, apellidos, direccion, localidad, provincia, pais,dinero);
+Crupier c(DNI, codigo, nombre, apellidos, direccion, localidad, provincia, pais);
+Ruleta r(c);
 
 cout << "\nElija una opción:\n";
 cout << "1. Cargar los jugadores del fichero\n";
@@ -27,15 +31,14 @@ cout << "3. Ver el estado de la ruleta, el dinero de la banca y jugadores\n";
 cout << "4. Jugar, premios de cada jugador y balance de la banca\n";
 cout << "5. Eliminar a un jugador de la mesa\n";
 cout << "6. Añadir a un jugador a la mesa\n";
-cout << "7. Salir del programa";
-cout << "Opcion elegida: ";
+cout << "7. Salir del programa\n";
+cout << "\nOpcion elegida: ";
 cin >> opcion;
-cout << "\n";
 
 switch (opcion) {
      case 1:
           cout << "\nHa elegido cargar los jugadores del fichero\n";
-          r.getBanca();
+          cout << "El valor de la banca es: " << r.getBanca() << "Y el de la bola es: " << r.getBola() << "\n";
           break;
      case 2:
           cout << "\nHa elegido guardar los jugadores en el fichero\n";
