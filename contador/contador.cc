@@ -2,103 +2,111 @@
 
 using namespace std;
 
-Contador::Contador()
-{
-     contador_ = 0;
 
-}
-
-Contador::Contador(int minimo){
-
-     minimo_ = 0;
-     maximo_ = 1000;
-     inicial_ = 0;
-
-     minimo_ = minimo;
-
-     if (inicial_ < minimo_){
-          setContador(0);
-     }
-     else{
-
-          setContador(inicial_);
-
-     }
-}
-
-
-Contador::Contador(int minimo, int maximo){
-
-     minimo_ = 0;
-     maximo_ = 1000;
-     inicial_ = 0;
-
-     minimo_ = minimo;
-     maximo_ = maximo;
-
-     if(inicial_ < minimo_){
-
-          setContador(0);
-
-     }
-     else{
-          if (inicial_ > maximo_){
-
-               setContador(1000);
-          }
-          else{
-
-               setContador(inicial_);
-          }
-
-     }
-
-
-}
 Contador::Contador(int minimo, int maximo, int inicial){
 
+     list <int>L;
+
+     if(maximo<minimo){
+
+          inicial = 0;
+
+     }
+     if((inicial > maximo) or (inicial < minimo)){
+
+          inicial = 0;
+
+     }
      minimo_ = minimo;
      maximo_ = maximo;
      inicial_ = inicial;
 
-     if(inicial_ <= minimo_){
-          setContador(minimo_);
-     }
-     if(inicial_ >= maximo_){
-          setContador(maximo_);
-     }
-     if((inicial_ > minimo_) and (inicial_ < maximo_)){
-
-          setContador(inicial_) ;
-     }
-     if((inicial_ > minimo_) and (inicial_ > maximo_)){
-          inicial_= 0;
-          setContador(0);
-     }
-     if((inicial_ < minimo_) and (inicial_ < maximo_)){
-          inicial_= 0;
-          setContador(0);
-     }
+     L.push_back(inicial_);
 
 }
 
-Contador Contador::operator=(int contador){
+void Contador::operator=(int num){
 
-     contador_ = contador;
-     return *this;
+     if(num > maximo_){
 
+          num = maximo_;
+
+     }
+     if(num < minimo_){
+
+          num = minimo_;
+
+     }
+     inicial_ = num;
+     contador_.push_back(inicial_);
 }
-Contador  Contador::operator=(const Contador &c){
 
-     contador_ = c.contador_;
-     return *this;
+void Contador::operator=(const Contador &c){
 
+     maximo_ = c.maximo_;
+     minimo_ = c.minimo_;
+     inicial_ = c.inicial_;
+     contador_.push_back(inicial_);
 }
 
-Contador Contador::operator++(int){
+Contador Contador::operator++(int){     // Para incremento postfijo
 
-     Contador tmp=*this;
-     ++contador_;
+     Contador tmp = *this;
+     ++inicial_;
+
+     if(inicial_ > maximo_){
+
+          inicial_ = maximo_;
+
+     }
+
+     contador_.push_back(inicial_);
+
      return tmp;
+
+}
+
+Contador Contador::operator++(void){    // Para incremento pretfijo
+
+     ++inicial_;
+
+     if(inicial_ > maximo_){
+          inicial_ = maximo_;
+     }
+
+     contador_.push_back(inicial_);
+
+     return *this;
+
+}
+
+Contador Contador::operator--(int){
+
+     Contador tmp = *this;
+
+     --inicial_;
+
+     if(inicial_ < minimo_){
+
+          inicial_ = minimo_;
+     }
+
+     contador_.push_back(inicial_);
+
+     return tmp;
+
+}
+
+Contador Contador::operator--(void){
+
+     --inicial_;
+     if(inicial_ < minimo_){
+
+          inicial_ = minimo_;
+     }
+
+     contador_.push_back(inicial_);
+
+     return *this;
 
 }

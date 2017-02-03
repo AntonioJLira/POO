@@ -1,38 +1,52 @@
 #ifndef CONTADOR_H
 #define CONTADOR_H
+#include <list>
+
+using namespace std;
 
 class Contador{
+private:
+
+     int minimo_, maximo_,  inicial_;
+     list<int>contador_ ;
 
 public:
 
-     // Constructores para 0-3 parametros
+     // Constructor con 3 parametros
 
-     Contador();
-     Contador(int minimo);
-     Contador(int minimo, int maximo);
-     Contador(int minimo, int maximo, int inicial);
+     Contador(int minimo=0 , int maximo=1000, int inicial=0);
 
-     // Sobrecarga de operador =
+     // Método get
 
-     Contador operator=(int contador);             // Para asignacion de enteros
-     Contador operator=(const Contador &c);        // Para asignacion de objetos
+     int get(){return inicial_;};
 
-     // Sobrecarga del operador ++
+     // Operador de asignacion con dos variantes, una que reciba un entero
+
+     void operator=(int num);
+
+     // ... y otra a la cual se le pasa un objeto y lo asigne a otro
+
+     void operator=(const Contador &c);
+
+     // Operadores de incremento y decremento
+
+     // Para incremento postfijo n++
 
      Contador operator++(int);
 
+     // Para incremento prefijo ++n
 
-     // Observador y modificador del contador
+     Contador operator++(void);
 
-     void setContador(int contador){contador_=contador;};
-     int get(){return contador_;};
+     // Operadores de decremento
 
+     // Decremento postfijo
 
+     Contador operator--(int);
 
-private:
+     // Decremento pretfijo
 
-     int contador_, maximo_, minimo_, inicial_;
-
+     Contador operator--(void);
 
 };
 

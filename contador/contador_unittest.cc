@@ -54,7 +54,7 @@ TEST(Contador, IncrementoPostfijo2) {
   c++;
   EXPECT_EQ(10, c.get());
 }
-/*
+
 TEST(Contador, IncrementoPrefijo1) {
   Contador c;
   EXPECT_EQ(0, c.get());
@@ -64,8 +64,6 @@ TEST(Contador, IncrementoPrefijo1) {
   EXPECT_EQ(2, c.get());
 }
 
-
-
 TEST(Contador, IncrementoPrefijo2) {
   Contador c(1,10,9);
   EXPECT_EQ(9, c.get());
@@ -73,7 +71,7 @@ TEST(Contador, IncrementoPrefijo2) {
   ++c;
   EXPECT_EQ(10, c.get());
 }
-
+/*
 TEST(Contador, DecrementoPostfijo1) {
   Contador c;
   EXPECT_EQ(0, c.get());
@@ -153,7 +151,7 @@ TEST(Contador, Undo3) {
   EXPECT_TRUE(c.undo(3));
   EXPECT_EQ(0,c.get());
 }
-
+*/
 TEST(Contador, Asignacion1) {
   Contador c;
   c=10;
@@ -174,7 +172,7 @@ TEST(Contador, Asignacion3) {
   d=c;
   EXPECT_EQ(10, d.get());
 }
-
+/*
 TEST(Contador, DevolucionUnarioPrefijo) {
   Contador c, d;
   c=10;
