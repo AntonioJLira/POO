@@ -36,6 +36,8 @@ TEST(Contador, Constructor2) {
   EXPECT_EQ(0, e.get());
 }
 
+
+
 TEST(Contador, IncrementoPostfijo1) {
   Contador c;
   EXPECT_EQ(0, c.get());
@@ -52,7 +54,7 @@ TEST(Contador, IncrementoPostfijo2) {
   c++;
   EXPECT_EQ(10, c.get());
 }
-
+/*
 TEST(Contador, IncrementoPrefijo1) {
   Contador c;
   EXPECT_EQ(0, c.get());
@@ -61,6 +63,8 @@ TEST(Contador, IncrementoPrefijo1) {
   ++c;
   EXPECT_EQ(2, c.get());
 }
+
+
 
 TEST(Contador, IncrementoPrefijo2) {
   Contador c(1,10,9);
@@ -157,7 +161,7 @@ TEST(Contador, Asignacion1) {
 }
 
 TEST(Contador, Asignacion2) {
-  Contador c;  
+  Contador c;
   c=5555;
   EXPECT_EQ(1000, c.get()); // valor max es 1000
   c=-55555;
@@ -249,4 +253,4 @@ TEST(Contador, Resta3) {
   c=1-d;
   EXPECT_EQ(1, c.get());// valor mínimo es 1
 }
-
+*/
