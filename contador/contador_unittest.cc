@@ -71,7 +71,7 @@ TEST(Contador, IncrementoPrefijo2) {
   ++c;
   EXPECT_EQ(10, c.get());
 }
-/*
+
 TEST(Contador, DecrementoPostfijo1) {
   Contador c;
   EXPECT_EQ(0, c.get());
@@ -119,7 +119,7 @@ TEST(Contador, DecrementoPrefijo3) {
   --c;
   EXPECT_EQ(1, c.get());
 }
-
+/*
 TEST(Contador, UndoValorDefecto) {
   Contador c;
   EXPECT_FALSE(c.undo());
@@ -197,7 +197,7 @@ TEST(Contador, DevolucionUnarioPostfijo) {
   EXPECT_EQ(11, d.get());
 }
 
-
+*/
 TEST(Contador, Suma1) {
   Contador c,d;
   c=d+10;
@@ -251,4 +251,3 @@ TEST(Contador, Resta3) {
   c=1-d;
   EXPECT_EQ(1, c.get());// valor mínimo es 1
 }
-*/

@@ -110,3 +110,59 @@ Contador Contador::operator--(void){
      return *this;
 
 }
+
+Contador operator+(Contador c, int n){  // Solamente lleva un Contador
+
+     if((c.inicial_ + n) > (c.maximo_)){
+          c.inicial_ = c.maximo_;
+     }else{
+          c.inicial_ = c.inicial_ + n;
+     }
+
+     c.contador_.push_back(c.inicial_);
+
+     return c;
+
+}
+
+Contador operator+(int n, Contador c){
+
+     if(c.inicial_ + n > c.maximo_){
+
+          c.inicial_ = c.maximo_;
+
+     }else{
+
+          c.inicial_ = c.inicial_ + n;
+
+     }
+
+     c.contador_.push_back(c.inicial_);
+
+     return c;
+
+}
+
+Contador operator-(Contador c, int n){
+
+     if(c.inicial_-n <c.minimo_){
+        c.inicial_=c.minimo_;
+     }else{
+        c.inicial_=c.inicial_-n;
+     }
+     c.contador_.push_back(c.inicial_);
+     return c;
+
+}
+
+Contador operator-(int n, Contador c){
+
+     if(n-c.inicial_ <c.minimo_){
+        c.inicial_=c.minimo_;
+     }else{
+        c.inicial_=n-c.inicial_;
+     }
+     c.contador_.push_back(c.inicial_);
+     return c;
+
+}

@@ -48,6 +48,18 @@ public:
 
      Contador operator--(void);
 
+     // Operador de suma (+)
+
+     friend Contador operator+(Contador c, int n);     // Para c + 10
+
+     friend Contador operator+(int n, Contador c);     // Para 10 + c
+
+     friend Contador operator-(Contador c, int n);     // Para c - 10
+
+     friend Contador operator-(int n, Contador c);
+
+
+
 };
 
 #endif
