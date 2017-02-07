@@ -5,7 +5,7 @@ using namespace std;
 
 int main (){
 
-     int opcion=1;
+     int opcion=1, n=5;
 
      Sobrecarga A(1,2,4), B(7,8,9), C(5,3,7);
 
@@ -14,13 +14,14 @@ int main (){
      cout << "\nSobrecargas de operadores.\n\n";
      cout << "1. Sobrecarga del operador de asignación (=)\n";
      cout << "2. Sobrecarga del operador suma/resta(+/-)\n";
-     cout << "3. Sobrecarga del operador incremento/decremento(o++/o--)\n";
-     cout << "4. Sobrecarga del operador incremento/decremento(++o/--o)\n";
-     cout << "5. Sobrecarga del operador de flujo >>\n";
-     cout << "6. Sobrecarga del operador de flujo <<\n";
-     cout << "7. Sobrecarga de funciones friend \n";
-     cout << "8. Información sobre los operadores\n";
-     cout << "9. Información sobre los objetos\n";
+     cout << "3. Sobrecarga del operador suma/resta con parametro\n";
+     cout << "4. Sobrecarga del operador incremento/decremento(o++/o--)\n";
+     cout << "5. Sobrecarga del operador incremento/decremento(++o/--o)\n";
+     cout << "6. Sobrecarga del operador de flujo >>\n";
+     cout << "7. Sobrecarga del operador de flujo <<\n";
+     cout << "8. Sobrecarga de funciones friend \n";
+     cout << "9. Información sobre los operadores\n";
+     cout << "10. Información sobre los objetos\n";
      cout << "0. Salir\n";
      cout << "\nElija una opcion: ";
      cin >> opcion;
@@ -33,22 +34,40 @@ int main (){
                break;
 
           case 1:
-               cout << "\nLos valores antes del operador de asignación\n";
+               cout << "\nLos valores antes del operador de asignación A = B\n";
                cout << "\nValor de A: " << A.getA() << "\n";
                cout << "Valor de B: " << A.getB() << "\n";
                cout << "Valor de C: " << A.getC() << "\n";
                A = B ;
-               cout << "\nLos valores después del operador de asignación\n";
+               cout << "\nLos valores después del operador de asignación A = B\n";
                cout << "\nValor de A: " << A.getA() << "\n";
                cout << "Valor de B: " << A.getB() << "\n";
                cout << "Valor de C: " << A.getC() << "\n";
                break;
 
           case 2:
+               cout << "\nLos valores antes del operador de asignación A = A + B\n";
+               cout << "\nValor de A: " << A.getA() << "\n";
+               cout << "Valor de B: " << A.getB() << "\n";
+               cout << "Valor de C: " << A.getC() << "\n";
+               A = A + B ;
+               cout << "\nLos valores después del operador de asignación A = A + B\n";
+               cout << "\nValor de A: " << A.getA() << "\n";
+               cout << "Valor de B: " << A.getB() << "\n";
+               cout << "Valor de C: " << A.getC() << "\n";
 
                break;
 
           case 3:
+               cout << "\nLos valores antes del operador de asignación A = A + B\n";
+               cout << "\nValor de A: " << A.getA() << "\n";
+               cout << "Valor de B: " << A.getB() << "\n";
+               cout << "Valor de C: " << A.getC() << "\n";
+               A = n + A ;
+               cout << "\nLos valores después del operador de asignación A = A + B\n";
+               cout << "\nValor de A: " << A.getA() << "\n";
+               cout << "Valor de B: " << A.getB() << "\n";
+               cout << "Valor de C: " << A.getC() << "\n";
 
                break;
 

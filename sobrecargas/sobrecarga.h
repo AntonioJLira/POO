@@ -30,6 +30,9 @@ class Sobrecarga{
                // Sobrecarga del operador resta
                Sobrecarga operator-(const Sobrecarga &s);
 
+               // Sobrecarga del operador suma con parametro
+               friend Sobrecarga operator+(int n, Sobrecarga s);
+
                // Sobrecarga de incremento postfijo s++
                Sobrecarga operator++(int);
 

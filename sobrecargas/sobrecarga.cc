@@ -35,6 +35,17 @@ Sobrecarga Sobrecarga::operator-(const Sobrecarga &s){
 
 }
 
+Sobrecarga operator+(int n, Sobrecarga s){
+
+     s.a_ = n + s.a_;
+     s.b_ = n + s.b_;
+     s.c_ = n + s.c_;
+
+     return s;
+
+}
+
+
 Sobrecarga Sobrecarga::operator++(int){      // Para incremento postfijo s++
 
      Sobrecarga tmp = *this;
