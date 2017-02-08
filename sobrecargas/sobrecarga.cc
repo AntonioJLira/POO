@@ -1,5 +1,7 @@
 #include "sobrecarga.h"
 
+using namespace std;
+
 
 Sobrecarga Sobrecarga::operator=(const Sobrecarga &s){
 
@@ -40,6 +42,16 @@ Sobrecarga operator+(int n, Sobrecarga s){
      s.a_ = n + s.a_;
      s.b_ = n + s.b_;
      s.c_ = n + s.c_;
+
+     return s;
+
+}
+
+Sobrecarga operator+(Sobrecarga s, int n){
+
+     s.a_ =  s.a_ + n;
+     s.b_ =  s.b_ + n;
+     s.c_ =  s.c_ + n;
 
      return s;
 
@@ -87,6 +99,14 @@ Sobrecarga Sobrecarga::operator--(void){      // Para incremento pretfijo --s
      --c_;
 
      return *this;
+
+}
+
+ostream& operator << (ostream & o, const Sobrecarga &s){
+
+     o << "(" << s.getA() << "," << s.getB() << "," << s.getC() << ")";
+
+     return o;
 
 }
 

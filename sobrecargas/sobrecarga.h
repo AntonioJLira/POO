@@ -17,6 +17,10 @@ class Sobrecarga{
           int getA(){return a_;};
           int getB(){return b_;};
           int getC(){return c_;};
+          /*void set(int a){a_=a;};
+          void set(int b){b_=b;};
+          void set(int c){c_=c;};*/
+
 
 
           // Sobrecargas de operadores
@@ -33,6 +37,9 @@ class Sobrecarga{
                // Sobrecarga del operador suma con parametro
                friend Sobrecarga operator+(int n, Sobrecarga s);
 
+               // Sobrecarga del operador suma con parametro
+               friend Sobrecarga operator+(Sobrecarga s, int n);
+
                // Sobrecarga de incremento postfijo s++
                Sobrecarga operator++(int);
 
@@ -44,9 +51,6 @@ class Sobrecarga{
 
                // Sobrecarga de decremento prefijo --s
                Sobrecarga operator--(void);
-
-               //friend std::istream & operator>>(std::istream& flujoEntrada, Pyme &p);
-               //friend std::ostream & operator<<(std::ostream& flujoSalida, Pyme const &p);
 
           // ~Sobrecarga();
 
