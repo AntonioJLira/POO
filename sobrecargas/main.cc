@@ -95,15 +95,18 @@ int main (){
           case 6:
                // Sobrecarga del operador de flujo >>
 
+               cout << "El valor de A es → " << A << "\n";
+               cout << "El valor de B es → " << B << "\n";
+               cout << "El valor de C es → " << C << "\n";
+
 
                break;
 
           case 7:
                // Sobrecarga del operador de flujo <<
 
-               cout << "A → " << A << "\n";
-               cout << "B → " << B << "\n";
-               cout << "C → " << C << "\n";
+               cin >> A;
+               cout << "El valor actual del objeto A es → " << A << "\n";
 
                break;
 

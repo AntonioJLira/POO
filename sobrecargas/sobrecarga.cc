@@ -102,11 +102,21 @@ Sobrecarga Sobrecarga::operator--(void){      // Para incremento pretfijo --s
 
 }
 
-ostream& operator << (ostream & o, const Sobrecarga &s){
+ostream & operator<<(ostream &o, const Sobrecarga &s){
 
-     o << "(" << s.getA() << "," << s.getB() << "," << s.getC() << ")";
+     o << "(" << s.a_ << "," << s.b_ << "," << s.c_ << ")";
 
      return o;
+
+}
+
+istream & operator>>(istream &i, Sobrecarga &s){
+
+     cout << "Introduce valores para (a, b, c): ";
+     i >> s.a_ >> s.b_ >> s.c_;
+     i.ignore();
+
+     return i;
 
 }
 

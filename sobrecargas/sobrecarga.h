@@ -1,6 +1,8 @@
 #ifndef SOBRECARGA
 #define SOBRECARGA
 
+#include <iostream>
+
 using namespace std;
 
 class Sobrecarga{
@@ -17,9 +19,9 @@ class Sobrecarga{
           int getA(){return a_;};
           int getB(){return b_;};
           int getC(){return c_;};
-          /*void set(int a){a_=a;};
-          void set(int b){b_=b;};
-          void set(int c){c_=c;};*/
+          void setA(int a){a_=a;};
+          void setB(int b){b_=b;};
+          void setC(int c){c_=c;};
 
 
 
@@ -51,6 +53,12 @@ class Sobrecarga{
 
                // Sobrecarga de decremento prefijo --s
                Sobrecarga operator--(void);
+
+               // Sobrecarga del operador <<
+               friend ostream & operator<<(ostream &o, const Sobrecarga  &s);
+
+               // Sobrecarga del operador >>
+               friend istream & operator>>(istream &i, Sobrecarga  &s);
 
           // ~Sobrecarga();
 
