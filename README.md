@@ -11,4 +11,6 @@
  - Clase Ruleta.
 * Practica 4.
  - Clase Contador.
-* Practica 5.
+* Practica 5. 
+
+[![Progreso](https://img.shields.io/badge/Practicas-Finalizadas-brightgreen.svg)]()
