@@ -20,11 +20,11 @@
 // Tests the c'tor.
 TEST(Dados, Constructor) {
   Dados d;
-  
+
   EXPECT_EQ(1, d.getDado1());
   EXPECT_EQ(1, d.getDado2());
   EXPECT_EQ(2, d.getSuma());
-  
+
 }
 
 // Tests operación lanzamiento
@@ -145,7 +145,7 @@ TEST(Dados, getMedia) { // Un buen test con random()
   EXPECT_NEAR((s1/12.0), d.getMedia1(), 0.001);
   EXPECT_NEAR((s2/12.0), d.getMedia2(), 0.001);
 }
-
+/*
 TEST(Dados, getUltimos1) {
   Dados d;
   int i;
@@ -191,4 +191,4 @@ TEST(Dados, getUltimos3) { // Otro buen test con random()
   d.getUltimos2(v2b);
   for (i=0;i<5;i++) EXPECT_EQ(v1a[i],v1b[4-i]);
   for (i=0;i<5;i++) EXPECT_EQ(v2a[i],v2b[4-i]);
-}
+}*/

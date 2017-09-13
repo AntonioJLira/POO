@@ -125,33 +125,5 @@ int main (){
      }
 
 
-
-/*
-     Operadores
-
-     Tipos:
-     cout << "+ - * / % ^ & | ~ ! , = < > <= >= ++ -- << >> == != && || \n
-     += -= *= /= %= ^= &= |= <<= >>= [] () -> ->* new delete";
-
-     Declaración:
-     tipo operator operador(argumentos) → int operator+(int numero,obj objeto);
-
-     Operadores no sobrecargables:
-     :: (resolución de ámbito)
-     . (seleccion de miembro)
-     .* (seleccion de un miembro referenciado por un puntero)
-     ?: (operador condicional)
-     sizeof (tamaño de)
-     typeid (identificación de tipos)
-
-*/
-
-/*
-
-     Puntero this →
-
-
-*/
-
      return 0;
 }

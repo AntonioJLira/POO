@@ -17,8 +17,8 @@ class Dados {
 		int getSuma() { return d1_ + d2_; };
 		int getDiferencia(){return abs( d1_ - d2_);};
 		int getLanzamiento(){return lanzamiento_;};
-		int getLanzamiento1(){return lanzamiento_/2;};
-		int getLanzamiento2(){return lanzamiento_/2;};
+		int getLanzamientos1(){return lanzamiento_/2;};
+		int getLanzamientos2(){return lanzamiento_/2;};
 		void setMedia1();
 		void setMedia2();
 		float getMedia1();

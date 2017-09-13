@@ -97,28 +97,28 @@ int Dados::getUltimos2(int i){
 
 float Dados::getMedia1(){
 
-        if (getLanzamiento1()==0){
+        if (getLanzamientos1()==0){
 
                 return 0;
 
         }
         else{
 
-               return media1_/getLanzamiento1();
+               return media1_/getLanzamientos1();
 
         }
 }
 
 float Dados::getMedia2(){
 
-        if (getLanzamiento2()==0){
+        if (getLanzamientos2()==0){
 
                 return 0;
 
         }
         else{
 
-               return media2_/getLanzamiento2();
+               return media2_/getLanzamientos2();
 
         }
 }
