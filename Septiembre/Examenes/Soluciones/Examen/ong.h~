@@ -1,0 +1,37 @@
+#ifndef ONG_H
+#define ONG_H
+
+#include<string>
+#include"socio.h"
+
+using namespace std;
+namespace poo{
+class Ong{
+	private:
+		string _nombreOng;
+		Socio * _vectorSocios;
+		int _numeroSocios;
+	public:
+	Ong(){
+		_nombreOng=("");
+		_vectorSocios=0;
+		}
+	~Ong();
+		string const getNombreOng(){return _nombreOng;}
+		Socio * const getVectorSocios(){return _vectorSocios;}
+		int const getNumeroSocios(){return _numeroSocios;}
+		Socio & getSocio(int indice);
+		Socio & operator[](int indice);
+		void setNombreOng(string nombreOng){_nombreOng=nombreOng;}
+		void setVectorSocios(int n=0, Socio * v=NULL);
+		Ong & operator=(Ong & o){
+			setNombreOng(o.getNombreOng());
+			setVectorSocios(o.getNumeroSocios(),o.getVectorSocios());
+			return * this;
+			}
+		void leerOng();
+		void escribirOng();
+		void grabarOngEnFichero();
+};
+}
+#endif

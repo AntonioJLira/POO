@@ -1,0 +1,16 @@
+# Nombre del proyecto
+PROJECT_NAME           = Examen-23-enero-2012
+
+# Idioma: español
+OUTPUT_LANGUAGE        = Spanish
+
+# Muestra la parte privada
+EXTRACT_PRIVATE        = YES
+
+# Muestra los ficheros "cpp"
+SOURCE_BROWSER         = YES
+
+# No se genera la documentación en latex
+GENERATE_LATEX         = NO
+
+

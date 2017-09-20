@@ -1,0 +1,111 @@
+#include<iostream>
+#include<fstream>
+#include<cstdlib>
+#include<cassert>
+#include<string>
+#include"ong.hpp"
+
+using namespace std;
+using namespace poo;
+
+	Ong::Ong(){
+		_nombreOng=("");
+		_vectorSocios=0;
+		}
+
+	Ong::~Ong(){
+		delete [] _vectorSocios;
+		setNombreOng("");
+		setVectorSocios(0);
+		}
+
+	Socio & Ong::getSocio(int indice){
+		assert((indice <= 0) && (indice < _numeroSocios));
+		return _vectorSocios[indice];
+		}
+	Socio & Ong::operator [](int indice){
+		assert((indice <= 0) && (indice < _numeroSocios));
+		return _vectorSocios[indice];
+		}
+	
+	void Ong::setVectorSocios(int n,Socio * v){
+		int i;
+		setNumeroSocios(n);
+		if(_numeroSocios==0){
+			_vectorSocios=NULL;
+			}
+		else{
+			_vectorSocios=new Socio[_numeroSocios];
+			if(_vectorSocios==NULL){
+				exit(1);
+				}
+			else if(v!=NULL){
+				for(i=0;i<_numeroSocios;i++){
+					_vectorSocios[i]=v[i];
+					}
+				}
+			}
+		
+		}
+
+	Ong & Ong::operator =(Ong & s){
+		setNombreOng(s.getNombreOng());
+		setVectorSocios(s.getNumeroSocios(),s.getVectorSocios());
+		return * this;
+		}
+	
+	void Ong::leerOng(){
+		string nombreOng;
+		cout << "Nombre ONG: ";
+		cin >> nombreOng;
+		setNombreOng(nombreOng);
+		int n,i;
+		n=getNumeroSocios();
+		for(i=0;i<n;i++){
+			cout << "Socio nº" << i+1 << endl ;
+			getSocio(i).leerSocio();
+			}
+		}
+	
+	void Ong::escribirOng(){
+		cout << "Nombre Ong: "<< getNombreOng() << endl;
+		int n,i;
+		n=getNumeroSocios();		
+		for(i=0;i<n;i++){
+			cout << "Socio nº" << i+1 << endl;
+			getSocio(i).escribirSocio();
+			}
+		}
+
+	void Ong::grabarEnFichero(string nombrefichero){
+		ofstream fichero;
+		int n,i;
+		n=getNumeroSocios();
+		fichero.open(nombrefichero.c_str(),ios::out);
+		fichero << getNombreOng() << "\n" << getNumeroSocios() << "\n";
+		for(i=0;i<n;i++){
+			fichero << getSocio(i).getNombre() << " " << getSocio(i).getApellidos() << " " << getSocio(i).getEdad() << " " << getSocio(i).getDonativo() << "\n"; 
+			}
+		fichero.close();
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

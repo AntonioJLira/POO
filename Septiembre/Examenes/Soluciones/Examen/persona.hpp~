@@ -1,0 +1,32 @@
+#ifndef PERSONA_HPP
+#define PERSONA_HPP
+#include <string>
+
+using namespace std;
+namespace poo{
+class Persona{
+
+	private:
+
+	string _nombre;
+	string _apellidos;
+	int _edad;
+
+	public:
+
+	Persona(string nombre="", string apellidos="", int edad=0);
+
+	Persona(const Persona &p);
+
+	string getNombre() const {return _nombre;};
+	string getApellidos() const {return _apellidos;};
+	int getEdad() const {return _edad;};
+	void setNombre(string nombre) {_nombre=nombre;};
+	void setApellidos(string apellidos) {_apellidos=apellidos;};
+	void setEdad(int edad){_edad=edad;};
+	void leerPersona();
+	void escribirPersona();
+
+};
+}
+#endif

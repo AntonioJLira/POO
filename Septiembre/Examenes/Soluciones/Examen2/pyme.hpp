@@ -1,0 +1,26 @@
+#ifndef _PYME_HPP_
+#define _PYME_HPP_
+
+#include<iostream>
+#include<string>
+#include "empresa.hpp"
+
+using namespace std;
+namespace poo{
+
+class Pyme:public Empresa{
+	private:
+		string _propietario;
+	public:
+		Pyme(string propietario="",string nombre="",string direccion="",string CIF="");
+		Pyme(Pyme const & p);
+		string getPropietario()const{return _propietario;}
+		void setPropietario(string propietario){_propietario=propietario;}
+		Pyme & operator=(Pyme const & p);
+		void leerPyme();
+		void escribirPyme();
+		friend std::ostream & operator <<(std::ostream & o,Pyme const & p);
+		friend std::istream & operator >>(std::istream & i,Pyme & p);
+};
+}
+#endif

@@ -1,0 +1,27 @@
+#ifndef SOCIO_H
+#define SOCIO_H
+
+
+#include<iostream>
+#include"persona.h"
+
+using namespace std;
+//Clase que representa a las organizaciones no gubernamentales
+class Socio:public Persona{
+
+	private:
+		int _donativo;
+	public:
+		Socio(string nombre="",string apelldos="",int edad=0,int donativo=0);
+		void setDonativo(int donativo){_donativo=donativo;}
+		int const getDonativo(){return _donativo;}
+		Socio(Socio const & s);
+		Socio & operator=(const Socio & s);
+		//friend istream &  operator>>(istream&i, Socio &s);
+		friend ostream & operator << (ostream &o,const Socio &a);
+		void leerSocio();
+		void escribirSocio();
+
+	};
+
+#endif

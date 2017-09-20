@@ -1,0 +1,89 @@
+#include<iostream>
+#include<cassert>
+#include<cstdlib>
+#include<fstream>
+#include"ong.h"
+
+
+using namespace std;
+using namespace poo;
+	Ong::~Ong(){
+		if(_numeroSocios>0 || _vectorSocios!=NULL){
+			delete [] _vectorSocios;
+			setNombreOng("");
+			setVectorSocios(0,NULL);
+			}
+		}
+	Socio & Ong::getSocio(int indice){
+		assert ((indice >= 0) && (indice < _numeroSocios));
+		return _vectorSocios[indice];
+		}
+	Socio & Ong::operator [](int indice){
+		assert ((indice >= 0) && (indice < _numeroSocios));
+		return _vectorSocios[indice];
+		}
+	void Ong::setVectorSocios(int n,Socio * v){
+		int i;
+		_numeroSocios=n;
+		if(_numeroSocios==0){
+			_vectorSocios=NULL;
+			}
+		else{
+			_vectorSocios=new Socio[_numeroSocios];
+			if(_vectorSocios==NULL){
+				exit(1);
+				}
+			else if(v!=NULL){
+				for(i=0;i<_numeroSocios;i++){
+					_vectorSocios[i]=v[i];
+					}
+				}
+			}
+		}
+
+	void Ong::leerOng(){
+		int i,n;
+		string nombre;
+		n=getNumeroSocios();
+	
+		cout << "Nombre de la ONG:";
+		cin >> nombre;
+
+		setNombreOng(nombre);
+
+		for(i=0;i<n;i++){
+			cout << "Socio nº " << i+1;
+			getSocio(i).leerSocio();
+			} 
+		}
+
+	void Ong::escribirOng(){
+		int i,n;
+		n=getNumeroSocios();
+
+		cout << "Nombre de la ONG: " << getNombreOng() << "\n";
+
+		for(i=0;i<n;i++){
+			cout << "Socio Nº " << i+1 << "\n";
+			getSocio(i).escribirSocio();
+			}
+		}
+	void Ong::grabarOngEnFichero(string nombrefichero){
+		int n=getNumeroSocios();
+		int i;
+		ofstream fichero;
+		fichero.open(nombrefichero.c_str(),ios::out);
+		if(!fichero){
+			cout << "Error al abrir el fichero";
+			exit(1);
+			}
+		fichero << n << "\n";
+		for(i=0;i<n;i++){
+			fichero << getSocio(i).getNombre() << " " << getSocio(i).getApellidos() << " " << getSocio(i).getEdad() << " " << getSocio(i).getDonativo() << "\n";
+			}
+		fichero.close;
+		}
+
+
+
+
